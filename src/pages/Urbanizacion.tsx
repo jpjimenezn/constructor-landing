@@ -2,7 +2,6 @@ import { useRef } from "react";
 import { MapPin, Route, Plane, GraduationCap, Heart, Zap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import Footer from "@/components/Footer";
-import projectResidential from "@/assets/project-residential.jpg";
 
 type UrbanProject = {
   title: string;
@@ -50,15 +49,6 @@ const services = [
 
 const projects: UrbanProject[] = [
   {
-    image: projectResidential,
-    title: "Fraccionamiento Las Palmas",
-    location: "Mérida, Yucatán",
-    area: "45 hectáreas",
-    lots: "380 lotes",
-    description: "Desarrollo urbano integral con áreas verdes, ciclovías y todos los servicios públicos.",
-    status: "Completado",
-  },
-  {
     video: "/videos/CarreteraEtzatlanx4.mp4",
     title: "Carretera Etzatlán",
     location: "Etzatlán, Jalisco",
@@ -66,7 +56,7 @@ const projects: UrbanProject[] = [
     lots: "Obra de carretera",
     description:
       "Proyecto de carretera en la región de Etzatlán. Pronto ampliaremos detalles del desarrollo.",
-    status: "En ejecución",
+    status: "Completada",
   },
   {
     video: "/PlazaLiberacionBackground.webm",
@@ -77,6 +67,16 @@ const projects: UrbanProject[] = [
     description:
       "Intervención en Plaza Liberación. Pronto ampliaremos detalles del desarrollo.",
     status: "Completado",
+  },
+  {
+    video: "/videos/LateralPeriferico.mp4",
+    title: "Lateral Periférico",
+    location: "Guadalajara, Jalisco",
+    area: "Infraestructura vial",
+    lots: "Obra de lateral",
+    description:
+      "Obra de lateral en el periférico. Pronto ampliaremos detalles del desarrollo.",
+    status: "En ejecución",
   },
 ];
 
@@ -123,7 +123,7 @@ const UrbanProjectCard = ({ project, index }: { project: UrbanProject; index: nu
         <div className="absolute top-4 right-4">
           <span
             className={`px-3 py-1 rounded-full text-sm font-semibold ${
-              project.status === "Completado"
+              project.status === "Completado" || project.status === "Completada"
                 ? "bg-accent text-accent-foreground"
                 : "bg-primary text-primary-foreground"
             }`}
@@ -131,7 +131,9 @@ const UrbanProjectCard = ({ project, index }: { project: UrbanProject; index: nu
             {project.status}
           </span>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        {!project.video && (
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        )}
       </div>
       <div className="p-6">
         <h3 className="text-2xl font-bold text-foreground mb-2">{project.title}</h3>
