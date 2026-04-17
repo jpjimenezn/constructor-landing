@@ -1,9 +1,19 @@
+import { useRef } from "react";
 import { MapPin, Route, Plane, GraduationCap, Heart, Zap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import Footer from "@/components/Footer";
 import projectResidential from "@/assets/project-residential.jpg";
-import projectCommercial from "@/assets/project-commercial.jpg";
-import projectIndustrial from "@/assets/project-industrial.jpg";
+
+type UrbanProject = {
+  title: string;
+  location: string;
+  area: string;
+  lots: string;
+  description: string;
+  status: string;
+  image?: string;
+  video?: string;
+};
 
 const services = [
   {
@@ -38,7 +48,7 @@ const services = [
   },
 ];
 
-const projects = [
+const projects: UrbanProject[] = [
   {
     image: projectResidential,
     title: "Fraccionamiento Las Palmas",
@@ -49,24 +59,95 @@ const projects = [
     status: "Completado",
   },
   {
-    image: projectCommercial,
-    title: "Urbanización Industrial Norte",
-    location: "Monterrey, N.L.",
-    area: "120 hectáreas",
-    lots: "85 lotes industriales",
-    description: "Parque industrial con infraestructura de primer nivel para empresas manufactureras.",
+    video: "/videos/CarreteraEtzatlanx4.mp4",
+    title: "Carretera Etzatlán",
+    location: "Etzatlán, Jalisco",
+    area: "Infraestructura vial",
+    lots: "Obra de carretera",
+    description:
+      "Proyecto de carretera en la región de Etzatlán. Pronto ampliaremos detalles del desarrollo.",
     status: "En ejecución",
   },
   {
-    image: projectIndustrial,
-    title: "Desarrollo Santa María",
-    location: "Querétaro, Qro.",
-    area: "28 hectáreas",
-    lots: "210 lotes",
-    description: "Fraccionamiento residencial con casa club, alberca y vigilancia 24 horas.",
+    video: "/PlazaLiberacionBackground.webm",
+    title: "Plaza Liberación",
+    location: "Guadalajara, Jalisco",
+    area: "Espacio público",
+    lots: "Obra urbana",
+    description:
+      "Intervención en Plaza Liberación. Pronto ampliaremos detalles del desarrollo.",
     status: "Completado",
   },
 ];
+
+const UrbanProjectCard = ({ project, index }: { project: UrbanProject; index: number }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handlePointerEnter = () => {
+    void videoRef.current?.play().catch(() => {});
+  };
+
+  const handlePointerLeave = () => {
+    const el = videoRef.current;
+    if (!el) return;
+    el.pause();
+    el.currentTime = 0;
+  };
+
+  return (
+    <div
+      className="group bg-card rounded-xl overflow-hidden shadow-card hover:shadow-elegant transition-all duration-500 hover:-translate-y-2 animate-fade-in-up"
+      style={{ animationDelay: `${index * 0.15}s` }}
+      onMouseEnter={handlePointerEnter}
+      onMouseLeave={handlePointerLeave}
+    >
+      <div className="relative aspect-[16/10] overflow-hidden bg-primary/10">
+        {project.video ? (
+          <video
+            ref={videoRef}
+            src={project.video}
+            className="h-full w-full object-cover transition-transform duration-700 ease-out will-change-transform group-hover:scale-105"
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label={`Video del proyecto ${project.title}`}
+          />
+        ) : (
+          <img
+            src={project.image}
+            alt={project.title}
+            className="h-full w-full object-cover transition-transform duration-700 ease-out will-change-transform group-hover:scale-110 group-hover:-translate-x-2 group-hover:-translate-y-1"
+          />
+        )}
+        <div className="absolute top-4 right-4">
+          <span
+            className={`px-3 py-1 rounded-full text-sm font-semibold ${
+              project.status === "Completado"
+                ? "bg-accent text-accent-foreground"
+                : "bg-primary text-primary-foreground"
+            }`}
+          >
+            {project.status}
+          </span>
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </div>
+      <div className="p-6">
+        <h3 className="text-2xl font-bold text-foreground mb-2">{project.title}</h3>
+        <div className="flex items-center gap-2 text-accent mb-3">
+          <MapPin className="h-4 w-4" />
+          <span className="text-sm font-medium">{project.location}</span>
+        </div>
+        <p className="text-muted-foreground mb-4">{project.description}</p>
+        <div className="flex gap-4 text-sm">
+          <span className="px-3 py-1 bg-secondary rounded-full text-foreground">{project.area}</span>
+          <span className="px-3 py-1 bg-secondary rounded-full text-foreground">{project.lots}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Urbanizacion = () => {
   return (
@@ -136,47 +217,9 @@ const Urbanizacion = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
             {projects.map((project, index) => (
-              <div
-                key={index}
-                className="group bg-card rounded-xl overflow-hidden shadow-card hover:shadow-elegant transition-all duration-500 hover:-translate-y-2 animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.15}s` }}
-              >
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute top-4 right-4">
-                    <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
-                      project.status === "Completado" 
-                        ? "bg-accent text-accent-foreground" 
-                        : "bg-primary text-primary-foreground"
-                    }`}>
-                      {project.status}
-                    </span>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-foreground mb-2">{project.title}</h3>
-                  <div className="flex items-center gap-2 text-accent mb-3">
-                    <MapPin className="h-4 w-4" />
-                    <span className="text-sm font-medium">{project.location}</span>
-                  </div>
-                  <p className="text-muted-foreground mb-4">{project.description}</p>
-                  <div className="flex gap-4 text-sm">
-                    <span className="px-3 py-1 bg-secondary rounded-full text-foreground">
-                      {project.area}
-                    </span>
-                    <span className="px-3 py-1 bg-secondary rounded-full text-foreground">
-                      {project.lots}
-                    </span>
-                  </div>
-                </div>
-              </div>
+              <UrbanProjectCard key={project.video ?? project.image ?? index} project={project} index={index} />
             ))}
           </div>
         </div>
