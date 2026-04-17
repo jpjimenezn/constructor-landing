@@ -10,12 +10,21 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
-        <div className="absolute inset-0 gradient-hero"></div>
+      {/* Background video with overlay */}
+      <div className="absolute inset-0">
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster={heroImage}
+          aria-hidden
+        >
+          <source src="/PlazaLiberacionBackground.webm" type="video/webm" />
+        </video>
+        <div className="absolute inset-0 gradient-hero" />
       </div>
 
       {/* Animated Background Elements */}

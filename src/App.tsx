@@ -17,7 +17,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter future={{ v7_startTransition: true }}>
         <Navbar />
         <Routes>
           <Route path="/" element={<Inicio />} />
