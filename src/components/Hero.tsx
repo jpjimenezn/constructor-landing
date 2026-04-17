@@ -10,7 +10,7 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background video with overlay */}
+      {/* Background video + velo blanco */}
       <div className="absolute inset-0">
         <video
           className="absolute inset-0 h-full w-full object-cover"
@@ -24,29 +24,32 @@ const Hero = () => {
         >
           <source src="/PlazaLiberacionBackground.webm" type="video/webm" />
         </video>
-        <div className="absolute inset-0 gradient-hero" />
-      </div>
-
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-float" style={{ animationDelay: "1.5s" }} />
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/60 to-white/70"
+          aria-hidden
+        />
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 pt-40 pb-20 text-center">
         <div className="flex justify-center mb-6 animate-fade-in">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/20 backdrop-blur-sm rounded-full border border-accent/30">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary/60 px-4 py-2 shadow-sm backdrop-blur-sm">
             <Building2 className="h-5 w-5 text-accent" />
-            <span className="text-primary-foreground/90 text-sm font-medium">Desde 1999 construyendo excelencia</span>
+            <span className="text-sm font-medium text-primary-foreground">Desde 1999 construyendo excelencia</span>
           </div>
         </div>
         
-        <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
+        <h1
+          className="mb-6 animate-fade-in-up text-5xl font-bold text-primary md:text-7xl"
+          style={{ animationDelay: "0.1s" }}
+        >
           Edificaciones Estructurales
-          <span className="block text-accent mt-2">COBAY</span>
+          <span className="mt-2 block text-accent">COBAY</span>
         </h1>
-        <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+        <p
+          className="mx-auto mb-8 max-w-2xl animate-fade-in-up text-xl text-foreground/85 md:text-2xl"
+          style={{ animationDelay: "0.2s" }}
+        >
           Construyendo confianza, elevando ciudades
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
@@ -61,7 +64,7 @@ const Hero = () => {
           <Button 
             size="lg" 
             variant="outline" 
-            className="bg-primary-foreground/10 border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-semibold text-lg px-8 py-6 transition-all duration-300 backdrop-blur-sm hover:scale-105"
+            className="border-2 border-primary bg-white/40 text-primary hover:bg-primary hover:text-primary-foreground font-semibold text-lg px-8 py-6 transition-all duration-300 hover:scale-105"
             asChild
           >
             <Link to="/desarrollos">
@@ -73,8 +76,8 @@ const Hero = () => {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary-foreground/50 rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-3 bg-primary-foreground/50 rounded-full"></div>
+        <div className="flex h-10 w-6 items-start justify-center rounded-full border-2 border-primary/35 p-2">
+          <div className="h-3 w-1 rounded-full bg-primary/40" />
         </div>
       </div>
     </section>

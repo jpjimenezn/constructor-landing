@@ -33,10 +33,10 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-3",
+        "fixed top-0 left-0 right-0 z-50 border-b border-border/30 transition-all duration-500 py-3",
         isScrolled
-          ? "bg-primary/80 backdrop-blur-md shadow-elegant"
-          : "bg-primary/40 backdrop-blur-sm"
+          ? "bg-white/80 shadow-elegant backdrop-blur-md"
+          : "bg-white/40 backdrop-blur-sm"
       )}
     >
       <div className="container mx-auto px-4">
@@ -52,10 +52,10 @@ const Navbar = () => {
               className="h-20 w-auto transition-transform duration-300 group-hover:scale-105"
             />
             <div className="flex flex-col leading-tight">
-              <span className="text-xs font-semibold text-primary-foreground/80 tracking-wider">
+              <span className="text-xs font-semibold tracking-wider text-muted-foreground">
                 GRUPO
               </span>
-              <span className="text-2xl font-bold text-primary-foreground -mt-1">
+              <span className="-mt-1 text-2xl font-bold text-primary">
                 COBAY
               </span>
             </div>
@@ -68,7 +68,7 @@ const Navbar = () => {
                 key={item.path}
                 to={item.path}
                 className={cn(
-                  "relative px-4 py-2 text-primary-foreground/80 font-medium transition-all duration-300 hover:text-accent",
+                  "group relative px-4 py-2 font-medium text-foreground/85 transition-all duration-300 hover:text-accent",
                   location.pathname === item.path && "text-accent"
                 )}
               >
@@ -86,7 +86,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-primary-foreground hover:text-accent transition-colors duration-300"
+            className="md:hidden p-2 text-foreground transition-colors duration-300 hover:text-accent"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
@@ -104,14 +104,14 @@ const Navbar = () => {
             isMobileMenuOpen ? "max-h-64 mt-4" : "max-h-0"
           )}
         >
-          <div className="bg-primary/90 backdrop-blur-md rounded-lg p-4 space-y-2">
+          <div className="space-y-2 rounded-lg border border-border/60 bg-white/90 p-4 backdrop-blur-md">
             {navItems.map((item, index) => (
               <Link
                 key={item.path}
                 to={item.path}
                 className={cn(
-                  "block px-4 py-3 rounded-lg text-primary-foreground/80 font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground",
-                  location.pathname === item.path && "bg-accent/20 text-accent",
+                  "block rounded-lg px-4 py-3 font-medium text-foreground/85 transition-all duration-300 hover:bg-accent/15 hover:text-accent",
+                  location.pathname === item.path && "bg-accent/15 text-accent",
                   "animate-slide-in-right"
                 )}
                 style={{ animationDelay: `${index * 0.1}s` }}
@@ -127,4 +127,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
