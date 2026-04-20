@@ -3,6 +3,7 @@ import { MapPin, Route, Plane, GraduationCap, Heart, Zap, ChevronLeft, ChevronRi
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Footer from "@/components/Footer";
+import { cn } from "@/lib/utils";
 
 type ServiceItem = {
   icon: React.ElementType;
@@ -146,9 +147,11 @@ type PhotoGalleryProps = {
   photos: string[];
   title: string;
   Icon: React.ElementType;
+  /** Clases para la rejilla (p. ej. `mt-0` si el espacio lo da el padre con `gap`) */
+  gridClassName?: string;
 };
 
-const PhotoGallery = ({ photos, title, Icon }: PhotoGalleryProps) => {
+const PhotoGallery = ({ photos, title, Icon, gridClassName }: PhotoGalleryProps) => {
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const thumbsRef = useRef<HTMLDivElement>(null);
@@ -186,7 +189,9 @@ const PhotoGallery = ({ photos, title, Icon }: PhotoGalleryProps) => {
   return (
     <>
       {/* ── Grid preview ─────────────────────────────────────── */}
-      <div className="mt-4 grid grid-cols-3 gap-0.5 rounded-xl overflow-hidden">
+      <div
+        className={cn("mt-4 grid grid-cols-3 gap-0.5 rounded-xl overflow-hidden", gridClassName)}
+      >
         {gridPhotos.map((src, i) => {
           const isLast = i === GRID_LIMIT - 1 && remaining > 0;
           return (
@@ -417,20 +422,31 @@ const Urbanizacion = () => {
               return (
                 <Card 
                   key={index}
-                  className="border-none shadow-card hover:shadow-elegant transition-all duration-500 hover:-translate-y-2 bg-card animate-fade-in-up"
+                  className="border-none shadow-card hover:shadow-elegant transition-all duration-500 hover:-translate-y-2 bg-card animate-fade-in-up h-full flex flex-col"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <CardContent className="p-6">
-                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-lg gradient-accent mb-4">
+                  <CardContent className="p-6 flex flex-col flex-1">
+                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-lg gradient-accent mb-4 shrink-0">
                       <Icon className="h-7 w-7 text-accent-foreground" />
                     </div>
-                    <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
-                    <p className="text-muted-foreground">{service.description}</p>
+                    {/* Altura total fija (alinea galerías); el título sin altura fija para no dejar hueco con 1 sola línea */}
+                    <div className="flex h-[11rem] shrink-0 flex-col gap-0.5">
+                      <h3 className="shrink-0 text-xl font-bold leading-tight text-foreground line-clamp-2">
+                        {service.title}
+                      </h3>
+                      <p
+                        className="min-h-0 flex-1 overflow-hidden text-base leading-relaxed text-muted-foreground line-clamp-5"
+                        title={service.description}
+                      >
+                        {service.description}
+                      </p>
+                    </div>
                     {service.photos.length > 0 && (
                       <PhotoGallery
                         photos={service.photos}
                         title={service.title}
                         Icon={Icon}
+                        gridClassName="mt-1.5"
                       />
                     )}
                   </CardContent>
