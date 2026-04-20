@@ -30,6 +30,12 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
+  const scrollToTopIfAlreadyHere = (path: string) => {
+    if (location.pathname === path) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <nav
       className={cn(
@@ -48,6 +54,7 @@ const Navbar = () => {
           <Link
             to="/"
             className="flex items-center gap-3 group"
+            onClick={() => scrollToTopIfAlreadyHere("/")}
           >
             <img 
               src={logoCobay} 
@@ -70,6 +77,7 @@ const Navbar = () => {
               <Link
                 key={item.path}
                 to={item.path}
+                onClick={() => scrollToTopIfAlreadyHere(item.path)}
                 className={cn(
                   "group relative px-4 py-2 font-medium text-foreground/85 transition-all duration-300 hover:text-accent",
                   location.pathname === item.path && "text-accent"
@@ -112,6 +120,7 @@ const Navbar = () => {
               <Link
                 key={item.path}
                 to={item.path}
+                onClick={() => scrollToTopIfAlreadyHere(item.path)}
                 className={cn(
                   "block rounded-lg px-4 py-3 font-medium text-foreground/85 transition-all duration-300 hover:bg-accent/15 hover:text-accent",
                   location.pathname === item.path && "bg-accent/15 text-accent",

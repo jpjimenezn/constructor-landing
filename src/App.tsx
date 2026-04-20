@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import ScrollToTop from "./components/ScrollToTop";
 import Inicio from "./pages/Inicio";
 import Urbanizacion from "./pages/Urbanizacion";
 import Desarrollos from "./pages/Desarrollos";
@@ -20,6 +21,7 @@ const App = () => (
       <BrowserRouter
         future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
       >
+        <ScrollToTop />
         <Navbar />
         <Routes>
           <Route path="/" element={<Inicio />} />
