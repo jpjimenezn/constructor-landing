@@ -1,7 +1,15 @@
-import { useRef } from "react";
-import { MapPin, Route, Plane, GraduationCap, Heart, Zap } from "lucide-react";
+import { useState, useRef, useCallback, useEffect } from "react";
+import { MapPin, Route, Plane, GraduationCap, Heart, Zap, ChevronLeft, ChevronRight, Images } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Footer from "@/components/Footer";
+
+type ServiceItem = {
+  icon: React.ElementType;
+  title: string;
+  description: string;
+  photos: string[];
+};
 
 type UrbanProject = {
   title: string;
@@ -14,36 +22,86 @@ type UrbanProject = {
   video?: string;
 };
 
-const services = [
+const services: ServiceItem[] = [
   {
     icon: Route,
     title: "Infraestructura Vial",
     description: "Construcción y desarrollo de calles, avenidas, puentes y sistemas de vialidad urbana de alta calidad.",
+    photos: [
+      "https://picsum.photos/seed/vial1/600/600",
+      "https://picsum.photos/seed/vial2/600/600",
+      "https://picsum.photos/seed/vial3/600/600",
+      "https://picsum.photos/seed/vial4/600/600",
+      "https://picsum.photos/seed/vial5/600/600",
+      "https://picsum.photos/seed/vial6/600/600",
+      "https://picsum.photos/seed/vial7/600/600",
+      "https://picsum.photos/seed/vial8/600/600",
+    ],
   },
   {
     icon: MapPin,
     title: "Carreteras",
     description: "Construcción de carreteras, autopistas y caminos con los más altos estándares de ingeniería.",
+    photos: [
+      "https://picsum.photos/seed/carr1/600/600",
+      "https://picsum.photos/seed/carr2/600/600",
+      "https://picsum.photos/seed/carr3/600/600",
+      "https://picsum.photos/seed/carr4/600/600",
+      "https://picsum.photos/seed/carr5/600/600",
+      "https://picsum.photos/seed/carr6/600/600",
+    ],
   },
   {
     icon: Plane,
     title: "Mantenimiento de Aeropuertos",
     description: "Servicios especializados de mantenimiento y construcción para instalaciones aeroportuarias.",
+    photos: [
+      "https://picsum.photos/seed/aero1/600/600",
+      "https://picsum.photos/seed/aero2/600/600",
+      "https://picsum.photos/seed/aero3/600/600",
+      "https://picsum.photos/seed/aero4/600/600",
+      "https://picsum.photos/seed/aero5/600/600",
+      "https://picsum.photos/seed/aero6/600/600",
+    ],
   },
   {
     icon: GraduationCap,
     title: "Escuelas",
     description: "Construcción de instituciones educativas modernas y funcionales para todos los niveles.",
+    photos: [
+      "https://picsum.photos/seed/esc1/600/600",
+      "https://picsum.photos/seed/esc2/600/600",
+      "https://picsum.photos/seed/esc3/600/600",
+      "https://picsum.photos/seed/esc4/600/600",
+      "https://picsum.photos/seed/esc5/600/600",
+      "https://picsum.photos/seed/esc6/600/600",
+    ],
   },
   {
     icon: Heart,
     title: "Hospitales",
     description: "Edificación de instalaciones de salud con infraestructura especializada y de última generación.",
+    photos: [
+      "https://picsum.photos/seed/hosp1/600/600",
+      "https://picsum.photos/seed/hosp2/600/600",
+      "https://picsum.photos/seed/hosp3/600/600",
+      "https://picsum.photos/seed/hosp4/600/600",
+      "https://picsum.photos/seed/hosp5/600/600",
+      "https://picsum.photos/seed/hosp6/600/600",
+    ],
   },
   {
     icon: Zap,
     title: "Electrificación",
     description: "Diseño e instalación de redes eléctricas, subestaciones y sistemas de iluminación.",
+    photos: [
+      "https://picsum.photos/seed/elec1/600/600",
+      "https://picsum.photos/seed/elec2/600/600",
+      "https://picsum.photos/seed/elec3/600/600",
+      "https://picsum.photos/seed/elec4/600/600",
+      "https://picsum.photos/seed/elec5/600/600",
+      "https://picsum.photos/seed/elec6/600/600",
+    ],
   },
 ];
 
@@ -79,6 +137,175 @@ const projects: UrbanProject[] = [
     status: "En ejecución",
   },
 ];
+
+// ── Instagram-style photo gallery ────────────────────────────────────────────
+
+const GRID_LIMIT = 6;
+
+type PhotoGalleryProps = {
+  photos: string[];
+  title: string;
+  Icon: React.ElementType;
+};
+
+const PhotoGallery = ({ photos, title, Icon }: PhotoGalleryProps) => {
+  const [open, setOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const thumbsRef = useRef<HTMLDivElement>(null);
+
+  const gridPhotos = photos.slice(0, GRID_LIMIT);
+  const remaining = photos.length - GRID_LIMIT;
+
+  const goPrev = useCallback(() => setActiveIndex((i) => Math.max(0, i - 1)), []);
+  const goNext = useCallback(() => setActiveIndex((i) => Math.min(photos.length - 1, i + 1)), [photos.length]);
+
+  // Keyboard navigation inside lightbox
+  useEffect(() => {
+    if (!open) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") goPrev();
+      if (e.key === "ArrowRight") goNext();
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [open, goPrev, goNext]);
+
+  // Scroll active thumbnail into view
+  useEffect(() => {
+    const container = thumbsRef.current;
+    if (!container) return;
+    const thumb = container.children[activeIndex] as HTMLElement | undefined;
+    thumb?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+  }, [activeIndex]);
+
+  const openAt = (index: number) => {
+    setActiveIndex(index);
+    setOpen(true);
+  };
+
+  return (
+    <>
+      {/* ── Grid preview ─────────────────────────────────────── */}
+      <div className="mt-4 grid grid-cols-3 gap-0.5 rounded-xl overflow-hidden">
+        {gridPhotos.map((src, i) => {
+          const isLast = i === GRID_LIMIT - 1 && remaining > 0;
+          return (
+            <button
+              key={i}
+              onClick={() => openAt(i)}
+              className="group/cell relative aspect-square overflow-hidden focus:outline-none"
+              aria-label={`Ver foto ${i + 1} de ${title}`}
+            >
+              <img
+                src={src}
+                alt={`${title} – foto ${i + 1}`}
+                className="h-full w-full object-cover transition-transform duration-300 group-hover/cell:scale-110"
+                loading="lazy"
+              />
+              {/* Hover tint */}
+              <span className="absolute inset-0 bg-black/0 group-hover/cell:bg-black/30 transition-colors duration-200" />
+              {/* "+N more" overlay on the last visible cell */}
+              {isLast && (
+                <span className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-black/55">
+                  <Images className="h-5 w-5 text-white" />
+                  <span className="text-white text-base font-bold leading-none">+{remaining}</span>
+                </span>
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* ── Lightbox ─────────────────────────────────────────── */}
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="gap-0 border-none bg-black p-0 sm:max-w-xl [&>button]:text-white [&>button]:opacity-80 [&>button]:hover:opacity-100">
+          {/* Header */}
+          <div className="flex items-center gap-3 border-b border-white/10 px-4 py-3">
+            <div className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full gradient-accent">
+              <Icon className="h-4 w-4 text-accent-foreground" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="truncate text-sm font-semibold text-white">{title}</p>
+              <p className="text-xs text-white/50">{photos.length} fotos</p>
+            </div>
+            <span className="text-xs tabular-nums text-white/50">
+              {activeIndex + 1} / {photos.length}
+            </span>
+          </div>
+
+          {/* Main image */}
+          <div className="relative aspect-square w-full overflow-hidden bg-black/90">
+            <img
+              key={activeIndex}
+              src={photos[activeIndex]}
+              alt={`${title} – foto ${activeIndex + 1}`}
+              className="h-full w-full object-cover animate-in fade-in-0 zoom-in-95 duration-300"
+            />
+            {/* Prev */}
+            {activeIndex > 0 && (
+              <button
+                onClick={goPrev}
+                className="absolute left-3 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-black shadow-md transition hover:bg-white hover:scale-110 focus:outline-none"
+                aria-label="Foto anterior"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+            )}
+            {/* Next */}
+            {activeIndex < photos.length - 1 && (
+              <button
+                onClick={goNext}
+                className="absolute right-3 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-black shadow-md transition hover:bg-white hover:scale-110 focus:outline-none"
+                aria-label="Foto siguiente"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            )}
+            {/* Dot indicators */}
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5">
+              {photos.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveIndex(i)}
+                  aria-label={`Ir a foto ${i + 1}`}
+                  className={`rounded-full transition-all duration-200 focus:outline-none ${
+                    i === activeIndex
+                      ? "h-2 w-4 bg-accent"
+                      : "h-1.5 w-1.5 bg-white/50 hover:bg-white/80"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Thumbnail strip */}
+          <div
+            ref={thumbsRef}
+            className="flex gap-1.5 overflow-x-auto px-3 py-3 scrollbar-none"
+            style={{ scrollbarWidth: "none" }}
+          >
+            {photos.map((src, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveIndex(i)}
+                aria-label={`Miniatura ${i + 1}`}
+                className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-md transition-all duration-200 focus:outline-none ${
+                  i === activeIndex
+                    ? "ring-2 ring-accent ring-offset-1 ring-offset-black opacity-100"
+                    : "opacity-50 hover:opacity-80"
+                }`}
+              >
+                <img src={src} alt="" className="h-full w-full object-cover" loading="lazy" />
+              </button>
+            ))}
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
+  );
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
 
 const UrbanProjectCard = ({ project, index }: { project: UrbanProject; index: number }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -199,6 +426,13 @@ const Urbanizacion = () => {
                     </div>
                     <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
                     <p className="text-muted-foreground">{service.description}</p>
+                    {service.photos.length > 0 && (
+                      <PhotoGallery
+                        photos={service.photos}
+                        title={service.title}
+                        Icon={Icon}
+                      />
+                    )}
                   </CardContent>
                 </Card>
               );
