@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Footer from "@/components/Footer";
 import { cn } from "@/lib/utils";
+import { urbanizacionGalleryFor } from "@/lib/urbanizacionGallery";
 
 type ServiceItem = {
   icon: React.ElementType;
@@ -28,29 +29,13 @@ const services: ServiceItem[] = [
     icon: Route,
     title: "Infraestructura Vial",
     description: "Construcción y desarrollo de calles, avenidas, puentes y sistemas de vialidad urbana de alta calidad.",
-    photos: [
-      "https://picsum.photos/seed/vial1/600/600",
-      "https://picsum.photos/seed/vial2/600/600",
-      "https://picsum.photos/seed/vial3/600/600",
-      "https://picsum.photos/seed/vial4/600/600",
-      "https://picsum.photos/seed/vial5/600/600",
-      "https://picsum.photos/seed/vial6/600/600",
-      "https://picsum.photos/seed/vial7/600/600",
-      "https://picsum.photos/seed/vial8/600/600",
-    ],
+    photos: urbanizacionGalleryFor("infraestructura-vial"),
   },
   {
     icon: MapPin,
     title: "Carreteras",
     description: "Construcción de carreteras, autopistas y caminos con los más altos estándares de ingeniería.",
-    photos: [
-      "https://picsum.photos/seed/carr1/600/600",
-      "https://picsum.photos/seed/carr2/600/600",
-      "https://picsum.photos/seed/carr3/600/600",
-      "https://picsum.photos/seed/carr4/600/600",
-      "https://picsum.photos/seed/carr5/600/600",
-      "https://picsum.photos/seed/carr6/600/600",
-    ],
+    photos: urbanizacionGalleryFor("carreteras"),
   },
   {
     icon: Plane,
@@ -82,14 +67,7 @@ const services: ServiceItem[] = [
     icon: Heart,
     title: "Hospitales",
     description: "Edificación de instalaciones de salud con infraestructura especializada y de última generación.",
-    photos: [
-      "https://picsum.photos/seed/hosp1/600/600",
-      "https://picsum.photos/seed/hosp2/600/600",
-      "https://picsum.photos/seed/hosp3/600/600",
-      "https://picsum.photos/seed/hosp4/600/600",
-      "https://picsum.photos/seed/hosp5/600/600",
-      "https://picsum.photos/seed/hosp6/600/600",
-    ],
+    photos: urbanizacionGalleryFor("hospitales"),
   },
   {
     icon: Zap,
