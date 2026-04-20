@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Building2 } from "lucide-react";
-import heroImage from "@/assets/hero-construction.jpg";
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -19,7 +18,6 @@ const Hero = () => {
           loop
           playsInline
           preload="auto"
-          poster={heroImage}
           aria-hidden
         >
           <source src="/PlazaLiberacionBackground.webm" type="video/webm" />
