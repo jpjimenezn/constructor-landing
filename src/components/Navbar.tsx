@@ -34,9 +34,12 @@ const Navbar = () => {
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 border-b border-border/30 transition-all duration-500 py-3",
-        isScrolled
-          ? "bg-white/80 shadow-elegant backdrop-blur-md"
-          : "bg-white/40 backdrop-blur-sm"
+        // En el Hero la navbar arranca translúcida; en las demás páginas siempre sólida
+        location.pathname === "/"
+          ? isScrolled
+            ? "bg-white/90 shadow-elegant backdrop-blur-md"
+            : "bg-white/40 backdrop-blur-sm"
+          : "bg-white shadow-elegant"
       )}
     >
       <div className="container mx-auto px-4">
