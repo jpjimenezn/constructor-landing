@@ -184,6 +184,9 @@ const PhotoGallery = ({ photos, title, Icon, gridClassName }: PhotoGalleryProps)
                 alt={`${title} – foto ${i + 1}`}
                 className="h-full w-full object-cover transition-transform duration-300 group-hover/cell:scale-110"
                 loading="lazy"
+                decoding="async"
+                fetchPriority="low"
+                sizes="(max-width: 768px) 33vw, 200px"
               />
               {/* Hover tint */}
               <span className="absolute inset-0 bg-black/0 group-hover/cell:bg-black/30 transition-colors duration-200" />
@@ -223,6 +226,8 @@ const PhotoGallery = ({ photos, title, Icon, gridClassName }: PhotoGalleryProps)
               src={photos[activeIndex]}
               alt={`${title} – foto ${activeIndex + 1}`}
               className="h-full w-full object-cover animate-in fade-in-0 zoom-in-95 duration-300"
+              decoding="async"
+              sizes="(max-width: 640px) 100vw, 576px"
             />
             {/* Prev */}
             {activeIndex > 0 && (
@@ -278,7 +283,15 @@ const PhotoGallery = ({ photos, title, Icon, gridClassName }: PhotoGalleryProps)
                     : "opacity-50 hover:opacity-80"
                 }`}
               >
-                <img src={src} alt="" className="h-full w-full object-cover" loading="lazy" />
+                <img
+                  src={src}
+                  alt=""
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
+                  sizes="56px"
+                />
               </button>
             ))}
           </div>
