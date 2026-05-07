@@ -8,6 +8,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Inicio from "./pages/Inicio";
 import Urbanizacion from "./pages/Urbanizacion";
 import UrbanizacionProyecto from "./pages/UrbanizacionProyecto";
+import UrbanizacionProyectoDetalle from "./pages/UrbanizacionProyectoDetalle";
 import Desarrollos from "./pages/Desarrollos";
 import BolsaTrabajo from "./pages/BolsaTrabajo";
 import NotFound from "./pages/NotFound";
@@ -28,6 +29,10 @@ const App = () => (
           <Route path="/" element={<Inicio />} />
           <Route path="/urbanizacion" element={<Urbanizacion />} />
           <Route path="/urbanizacion/:slug" element={<UrbanizacionProyecto />} />
+          <Route
+            path="/urbanizacion/:slug/:projectSlug"
+            element={<UrbanizacionProyectoDetalle />}
+          />
           <Route path="/desarrollos" element={<Desarrollos />} />
           <Route path="/bolsa-trabajo" element={<BolsaTrabajo />} />
           <Route path="*" element={<NotFound />} />
