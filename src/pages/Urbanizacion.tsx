@@ -19,6 +19,7 @@ type ServiceItem = {
 };
 
 type UrbanProject = {
+  href: string;
   title: string;
   location: string;
   area: string;
@@ -40,6 +41,7 @@ const services: ServiceItem[] = [
 
 const projects: UrbanProject[] = [
   {
+    href: "/urbanizacion/carreteras/etzatlan-magdalena",
     video: "/videos/CarreteraEtzatlanx4.mp4",
     title: "Carretera Etzatlan",
     location: "Etzatlan, Jalisco",
@@ -50,6 +52,7 @@ const projects: UrbanProject[] = [
     status: "Completada",
   },
   {
+    href: "/urbanizacion/infraestructura-vial/plaza-liberacion",
     video: "/PlazaLiberacionBackground.webm",
     title: "Plaza Liberacion",
     location: "Guadalajara, Jalisco",
@@ -60,6 +63,7 @@ const projects: UrbanProject[] = [
     status: "Completado",
   },
   {
+    href: "/urbanizacion/infraestructura-vial/lateral-periferico-sur",
     video: "/videos/LateralPeriferico.mp4",
     title: "Lateral Periferico",
     location: "Guadalajara, Jalisco",
@@ -92,7 +96,8 @@ const UrbanProjectCard = ({
   };
 
   return (
-    <div
+    <Link
+      to={project.href}
       className="group bg-card rounded-xl overflow-hidden shadow-card hover:shadow-elegant transition-all duration-500 hover:-translate-y-2 animate-fade-in-up"
       style={{ animationDelay: `${index * 0.15}s` }}
       onMouseEnter={handlePointerEnter}
@@ -145,7 +150,7 @@ const UrbanProjectCard = ({
           </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
