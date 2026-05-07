@@ -1,7 +1,7 @@
 import { Building2, Users, Award, Hammer } from "lucide-react";
 
 const stats = [
-  { icon: Building2, value: "⚠️ XX+", label: "Proyectos completados" }, // ⚠️ DATO PENDIENTE
+  { icon: Building2, value: "250+", label: "Proyectos completados" },
   { icon: Users, value: "25+", label: "Años de experiencia" }, // ✅ Desde 1999
   { icon: Award, value: "100%", label: "Compromiso con calidad" },
   { icon: Hammer, value: "Total", label: "Respaldo técnico" },

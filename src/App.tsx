@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
 import Inicio from "./pages/Inicio";
 import Urbanizacion from "./pages/Urbanizacion";
+import UrbanizacionProyecto from "./pages/UrbanizacionProyecto";
 import Desarrollos from "./pages/Desarrollos";
 import BolsaTrabajo from "./pages/BolsaTrabajo";
 import NotFound from "./pages/NotFound";
@@ -26,6 +27,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/urbanizacion" element={<Urbanizacion />} />
+          <Route path="/urbanizacion/:slug" element={<UrbanizacionProyecto />} />
           <Route path="/desarrollos" element={<Desarrollos />} />
           <Route path="/bolsa-trabajo" element={<BolsaTrabajo />} />
           <Route path="*" element={<NotFound />} />

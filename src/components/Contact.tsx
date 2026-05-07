@@ -61,7 +61,7 @@ const Contact = () => {
                     <Phone className="h-7 w-7 text-accent-foreground" />
                   </div>
                   <h4 className="font-semibold text-foreground mb-2">Teléfono</h4>
-                  <p className="text-muted-foreground">33 3123 2332</p>
+                  <p className="text-muted-foreground">33 3440 2330</p>
                 </div>
 
                 <div className="flex flex-col items-center">
@@ -69,8 +69,8 @@ const Contact = () => {
                     <Mail className="h-7 w-7 text-accent-foreground" />
                   </div>
                   <h4 className="font-semibold text-foreground mb-2">Email</h4>
-                  {/* ⚠️ DATO PENDIENTE - Reemplazar con email real */}
-                  <p className="text-muted-foreground">⚠️ PENDIENTE</p>
+
+                  <p className="text-muted-foreground">info@cobay.com.mx</p>
                 </div>
 
                 <a 
