@@ -109,7 +109,7 @@ const UrbanizacionProyectoDetalle = () => {
       </section>
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="w-[96vw] border-none bg-black/95 p-2 sm:max-w-6xl [&>button]:right-3 [&>button]:top-3 [&>button]:flex [&>button]:h-10 [&>button]:w-10 [&>button]:items-center [&>button]:justify-center [&>button]:rounded-full [&>button]:bg-white/90 [&>button]:p-0 [&>button]:text-black [&>button]:opacity-100 [&>button]:shadow-md [&>button]:transition hover:[&>button]:scale-105 hover:[&>button]:bg-white [&>button>svg]:h-5 [&>button>svg]:w-5">
+        <DialogContent className="w-[96vw] border-none bg-transparent p-0 shadow-none sm:max-w-6xl [&>button]:right-3 [&>button]:top-3 [&>button]:flex [&>button]:h-10 [&>button]:w-10 [&>button]:items-center [&>button]:justify-center [&>button]:rounded-full [&>button]:bg-white/90 [&>button]:p-0 [&>button]:text-black [&>button]:opacity-100 [&>button]:shadow-md [&>button]:transition hover:[&>button]:scale-105 hover:[&>button]:bg-white [&>button>svg]:h-5 [&>button>svg]:w-5">
           <img
             key={project.photos[activeIndex]}
             src={project.photos[activeIndex]}
