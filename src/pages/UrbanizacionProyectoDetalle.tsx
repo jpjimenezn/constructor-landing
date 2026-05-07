@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, Images } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, Images } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Footer from "@/components/Footer";
 import { findUrbanizationProjectBySlug } from "@/lib/urbanizacionProjects";
@@ -110,12 +110,36 @@ const UrbanizacionProyectoDetalle = () => {
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="w-[96vw] border-none bg-transparent p-0 shadow-none sm:max-w-6xl [&>button]:right-3 [&>button]:top-3 [&>button]:flex [&>button]:h-10 [&>button]:w-10 [&>button]:items-center [&>button]:justify-center [&>button]:rounded-full [&>button]:bg-white/90 [&>button]:p-0 [&>button]:text-black [&>button]:opacity-100 [&>button]:shadow-md [&>button]:transition hover:[&>button]:scale-105 hover:[&>button]:bg-white [&>button>svg]:h-5 [&>button>svg]:w-5">
-          <img
-            key={project.photos[activeIndex]}
-            src={project.photos[activeIndex]}
-            alt={`${project.title} - imagen ${activeIndex + 1}`}
-            className="max-h-[92vh] w-full object-contain animate-in fade-in zoom-in-95 duration-300"
-          />
+          <div className="relative">
+            <img
+              key={project.photos[activeIndex]}
+              src={project.photos[activeIndex]}
+              alt={`${project.title} - imagen ${activeIndex + 1}`}
+              className="max-h-[92vh] w-full object-contain animate-in fade-in zoom-in-95 duration-300"
+            />
+
+            {activeIndex > 0 && (
+              <button
+                type="button"
+                onClick={() => setActiveIndex((prev) => prev - 1)}
+                aria-label="Imagen anterior"
+                className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black shadow-md transition hover:scale-105 hover:bg-white"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+            )}
+
+            {activeIndex < project.photos.length - 1 && (
+              <button
+                type="button"
+                onClick={() => setActiveIndex((prev) => prev + 1)}
+                aria-label="Imagen siguiente"
+                className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black shadow-md transition hover:scale-105 hover:bg-white"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            )}
+          </div>
         </DialogContent>
       </Dialog>
 
