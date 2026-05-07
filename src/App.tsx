@@ -9,7 +9,9 @@ import Inicio from "./pages/Inicio";
 import Urbanizacion from "./pages/Urbanizacion";
 import UrbanizacionProyecto from "./pages/UrbanizacionProyecto";
 import UrbanizacionProyectoDetalle from "./pages/UrbanizacionProyectoDetalle";
-import Desarrollos from "./pages/Desarrollos";
+import Desarrollos from "./pages/Desarrollos.tsx";
+import DesarrollosProyecto from "./pages/DesarrollosProyecto";
+import DesarrollosProyectoDetalle from "./pages/DesarrollosProyectoDetalle";
 import BolsaTrabajo from "./pages/BolsaTrabajo";
 import NotFound from "./pages/NotFound";
 
@@ -34,6 +36,11 @@ const App = () => (
             element={<UrbanizacionProyectoDetalle />}
           />
           <Route path="/desarrollos" element={<Desarrollos />} />
+          <Route path="/desarrollos/:slug" element={<DesarrollosProyecto />} />
+          <Route
+            path="/desarrollos/:slug/:projectSlug"
+            element={<DesarrollosProyectoDetalle />}
+          />
           <Route path="/bolsa-trabajo" element={<BolsaTrabajo />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
