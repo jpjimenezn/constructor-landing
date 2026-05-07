@@ -75,6 +75,13 @@ const projects: UrbanProject[] = [
   },
 ];
 
+const stats = [
+  { value: "1.5M+", label: "m² construidos" },
+  { value: "150+", label: "Proyectos entregados" },
+  { value: "25+", label: "Años de experiencia" },
+  { value: "100%", label: "Clientes satisfechos" },
+];
+
 const UrbanProjectCard = ({
   project,
   index,
@@ -186,6 +193,25 @@ const Urbanizacion = () => {
               Transformamos terrenos en comunidades planificadas con la mas alta
               calidad en infraestructura y servicios urbanos.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-accent">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+            {stats.map((stat, index) => (
+              <div
+                key={stat.label}
+                className="text-center animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="mb-1 text-3xl font-bold text-accent-foreground md:text-4xl">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-accent-foreground/80">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
