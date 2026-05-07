@@ -77,7 +77,7 @@ const projects: UrbanProject[] = [
 
 const stats = [
   { value: "1.5M+", label: "m² construidos" },
-  { value: "150+", label: "Proyectos entregados" },
+  { value: "250+", label: "Proyectos entregados" },
   { value: "25+", label: "Años de experiencia" },
   { value: "100%", label: "Clientes satisfechos" },
 ];
