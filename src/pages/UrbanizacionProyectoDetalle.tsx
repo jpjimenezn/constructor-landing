@@ -110,7 +110,7 @@ const UrbanizacionProyectoDetalle = () => {
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="w-[96vw] border-none bg-transparent p-0 shadow-none sm:max-w-6xl [&>button]:right-3 [&>button]:top-3 [&>button]:flex [&>button]:h-10 [&>button]:w-10 [&>button]:items-center [&>button]:justify-center [&>button]:rounded-full [&>button]:bg-white/90 [&>button]:p-0 [&>button]:text-black [&>button]:opacity-100 [&>button]:shadow-md [&>button]:transition hover:[&>button]:scale-105 hover:[&>button]:bg-white [&>button>svg]:h-5 [&>button>svg]:w-5">
-          <div className="relative">
+          <div>
             <img
               key={project.photos[activeIndex]}
               src={project.photos[activeIndex]}
@@ -118,27 +118,31 @@ const UrbanizacionProyectoDetalle = () => {
               className="max-h-[92vh] w-full object-contain animate-in fade-in zoom-in-95 duration-300"
             />
 
-            {activeIndex > 0 && (
+            <div className="mt-4 flex items-center justify-center gap-4">
               <button
                 type="button"
                 onClick={() => setActiveIndex((prev) => prev - 1)}
                 aria-label="Imagen anterior"
-                className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black shadow-md transition hover:scale-105 hover:bg-white"
+                disabled={activeIndex === 0}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-black shadow-md transition hover:scale-105 hover:bg-white disabled:cursor-not-allowed disabled:opacity-40"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
-            )}
 
-            {activeIndex < project.photos.length - 1 && (
+              <span className="min-w-20 text-center text-sm font-medium text-white">
+                {activeIndex + 1} / {project.photos.length}
+              </span>
+
               <button
                 type="button"
                 onClick={() => setActiveIndex((prev) => prev + 1)}
                 aria-label="Imagen siguiente"
-                className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black shadow-md transition hover:scale-105 hover:bg-white"
+                disabled={activeIndex === project.photos.length - 1}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-black shadow-md transition hover:scale-105 hover:bg-white disabled:cursor-not-allowed disabled:opacity-40"
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
-            )}
+            </div>
           </div>
         </DialogContent>
       </Dialog>
