@@ -1,6 +1,9 @@
-import { Briefcase, Heart, Award, Users } from "lucide-react";
+import { Briefcase, Heart, Award, Users, Mail } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
+
+const CONTACT_EMAIL = "info@cobay.com.mx";
 
 const benefitsList = [
   {
@@ -21,6 +24,14 @@ const benefitsList = [
 ];
 
 const BolsaTrabajo = () => {
+  const handleEnviarCV = () => {
+    const subject = encodeURIComponent("Postulación — Envío de CV");
+    const body = encodeURIComponent(
+      "Hola, me gustaría postularme para formar parte del equipo COBAY.\n\nNombre:\nApellidos:\nTeléfono:\n\nMensaje:\n\n(Adjunta tu CV en este correo)"
+    );
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  };
+
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
@@ -68,7 +79,7 @@ const BolsaTrabajo = () => {
         </div>
       </section>
 
-      {/* Sin vacantes */}
+      {/* Vacantes */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-10">
@@ -92,6 +103,28 @@ const BolsaTrabajo = () => {
                 </p>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Enviar CV */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto text-center animate-fade-in-up">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl gradient-accent mb-6">
+              <Mail className="h-8 w-8 text-accent-foreground" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Envía tu <span className="text-accent">CV</span>
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              ¿Quieres ser parte de COBAY? Mándanos tu currículum y te contactaremos cuando surja una oportunidad.
+            </p>
+            <Button size="lg" onClick={handleEnviarCV} className="gap-2">
+              <Mail className="h-5 w-5" />
+              Enviar mi CV por correo
+            </Button>
+            <p className="text-sm text-muted-foreground mt-4">{CONTACT_EMAIL}</p>
           </div>
         </div>
       </section>
