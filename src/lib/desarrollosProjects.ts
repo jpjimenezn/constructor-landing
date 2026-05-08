@@ -13,6 +13,7 @@ export type DesarrolloService = {
   slug: string;
   title: string;
   description: string;
+  previewImage: string;
   projects: DesarrolloProject[];
 };
 
@@ -22,6 +23,7 @@ export const desarrollosServices: DesarrolloService[] = [
     title: "Vivienda Vertical",
     description:
       "Construccion de torres de departamentos y edificios habitacionales con disenos modernos y amenidades de primer nivel.",
+    previewImage: logoCobay,
     projects: [
       {
         slug: "torre-areni",
@@ -39,6 +41,7 @@ export const desarrollosServices: DesarrolloService[] = [
     title: "Casa Habitacion",
     description:
       "Construccion de casas residenciales personalizadas con acabados de alta calidad y atencion al detalle.",
+    previewImage: logoCobay,
     projects: [
       {
         slug: "andaluz",
@@ -74,6 +77,7 @@ export const desarrollosServices: DesarrolloService[] = [
     title: "Desarrollo Residencial",
     description:
       "Creacion de fraccionamientos y comunidades planificadas con infraestructura completa y areas verdes.",
+    previewImage: logoCobay,
     projects: [],
   },
 ];

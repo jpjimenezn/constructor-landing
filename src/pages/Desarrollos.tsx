@@ -124,6 +124,15 @@ const Desarrollos = () => {
                     className="group h-full border-none bg-card shadow-card transition-all duration-500 hover:-translate-y-2 hover:shadow-elegant animate-fade-in-up"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
+                    <div className="relative aspect-[16/9] overflow-hidden bg-primary/5">
+                      <img
+                        src={service.previewImage}
+                        alt={`Vista previa de ${service.title}`}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
                     <CardContent className="flex h-full flex-col p-6">
                       <div className="mb-4 inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-lg gradient-accent">
                         <Icon className="h-7 w-7 text-accent-foreground" />

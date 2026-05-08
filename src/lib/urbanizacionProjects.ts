@@ -1,4 +1,7 @@
 import logoCobay from "@/assets/logo-clasico-cobay.png";
+import infraestructuraVialPreview from "@/assets/urbanizacion/infraestructura-vial/Plaza-Liberacion-01.webp";
+import carreterasPreview from "@/assets/urbanizacion/carreteras/Etzatlan-04.webp";
+import hospitalesPreview from "@/assets/urbanizacion/hospitales/Regional-Civil-Viejo-02.webp";
 
 export type UrbanizationProject = {
   slug: string;
@@ -13,6 +16,7 @@ export type UrbanizationService = {
   slug: string;
   title: string;
   description: string;
+  previewImage: string;
   projects: UrbanizationProject[];
 };
 
@@ -51,6 +55,7 @@ export const urbanizationServices: UrbanizationService[] = [
     title: "Infraestructura Vial",
     description:
       "Construccion y desarrollo de calles, avenidas, puentes y sistemas de vialidad urbana de alta calidad.",
+    previewImage: infraestructuraVialPreview,
     projects: [
       {
         slug: "puente-vehicular-chapala",
@@ -131,6 +136,7 @@ export const urbanizationServices: UrbanizationService[] = [
     title: "Carreteras",
     description:
       "Construccion de carreteras, autopistas y caminos con los mas altos estandares de ingenieria.",
+    previewImage: carreterasPreview,
     projects: [
       {
         slug: "etzatlan-magdalena",
@@ -148,6 +154,7 @@ export const urbanizationServices: UrbanizationService[] = [
     title: "Mantenimiento de Aeropuertos",
     description:
       "Servicios especializados de mantenimiento y construccion para instalaciones aeroportuarias.",
+    previewImage: logoCobay,
     projects: [
       {
         slug: "aeropuerto-internacional-felipe-angeles",
@@ -192,6 +199,7 @@ export const urbanizationServices: UrbanizationService[] = [
     title: "Escuelas",
     description:
       "Construccion de instituciones educativas modernas y funcionales para todos los niveles.",
+    previewImage: logoCobay,
     projects: [
       {
         slug: "secundaria-tecnica-cecytej",
@@ -218,6 +226,7 @@ export const urbanizationServices: UrbanizationService[] = [
     title: "Hospitales",
     description:
       "Edificacion de instalaciones de salud con infraestructura especializada y de ultima generacion.",
+    previewImage: hospitalesPreview,
     projects: [
       {
         slug: "hospital-civil-oriente",
@@ -253,6 +262,7 @@ export const urbanizationServices: UrbanizationService[] = [
     title: "Electrificacion",
     description:
       "Diseno e instalacion de redes electricas, subestaciones y sistemas de iluminacion.",
+    previewImage: logoCobay,
     projects: [
       {
         slug: "museo-tequila-lab",
