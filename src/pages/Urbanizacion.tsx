@@ -241,15 +241,6 @@ const Urbanizacion = () => {
                     className="group border-none shadow-card hover:shadow-elegant transition-all duration-500 hover:-translate-y-2 bg-card animate-fade-in-up h-full flex flex-col"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <div className="relative aspect-[16/9] overflow-hidden bg-primary/5">
-                      <img
-                        src={service.previewImage}
-                        alt={`Vista previa de ${service.title}`}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
                     <CardContent className="p-6 flex flex-col flex-1">
                       <div className="inline-flex items-center justify-center w-14 h-14 rounded-lg gradient-accent mb-4 shrink-0">
                         <Icon className="h-7 w-7 text-accent-foreground" />
@@ -264,6 +255,15 @@ const Urbanizacion = () => {
                         >
                           {service.description}
                         </p>
+                      </div>
+                      <div className="relative aspect-[16/9] overflow-hidden rounded-lg bg-primary/5 mt-2">
+                        <img
+                          src={service.previewImage}
+                          alt={`Vista previa de ${service.title}`}
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          loading="lazy"
+                          decoding="async"
+                        />
                       </div>
                       <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-accent">
                         Ver proyectos
