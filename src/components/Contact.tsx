@@ -61,7 +61,7 @@ const Contact = () => {
                     <Phone className="h-7 w-7 text-accent-foreground" />
                   </div>
                   <h4 className="font-semibold text-foreground mb-2">Teléfono</h4>
-                  <p className="text-muted-foreground">33 3440 2330</p>
+                  <p className="text-muted-foreground">33 3123 2332</p>
                 </div>
 
                 <div className="flex flex-col items-center">
@@ -95,7 +95,7 @@ const Contact = () => {
             <div className="bg-primary text-primary-foreground p-8 rounded-lg shadow-elegant text-center">
               <h4 className="text-xl font-bold mb-4">Horario de Atención</h4>
               <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-8">
-                <p>Lunes a Viernes: 9:00 AM - 7:00 PM</p>
+                <p>Lunes a Viernes: 8:00 AM - 6:00 PM</p>
                 <p>Sábados: 9:00 AM - 2:00 PM</p>
                 <p>Domingos: Cerrado</p>
               </div>
