@@ -140,7 +140,7 @@ export const urbanizationServices: UrbanizationService[] = [
     projects: [
       {
         slug: "etzatlan-magdalena",
-        title: "Eztatlan-Magdalena",
+        title: "Carretera Etzatlan-Magdalena",
         shortDescription: "Construccion y mejoramiento carretero en el tramo regional Etzatlan - Magdalena.",
         fullDescription:
           "Obra carretera para mejorar conectividad regional entre Etzatlan y Magdalena, contemplando terracerias, estructura de pavimento y obras complementarias.",
