@@ -1,4 +1,4 @@
-import { Briefcase, Award, Users, Mail } from "lucide-react";
+import { Briefcase, Award, Users, Mail, LinkedinIcon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
@@ -115,10 +115,22 @@ const BolsaTrabajo = () => {
             <p className="text-lg text-muted-foreground mb-8">
               ¿Quieres ser parte de COBAY? Mándanos tu currículum y te contactaremos cuando surja una oportunidad.
             </p>
-            <Button size="lg" onClick={handleEnviarCV} className="gap-2">
-              <Mail className="h-5 w-5" />
-              Enviar mi CV por correo
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" onClick={handleEnviarCV} className="gap-2">
+                <Mail className="h-5 w-5" />
+                Enviar mi CV por correo
+              </Button>
+              <Button size="lg" variant="outline" asChild className="gap-2">
+                <a
+                  href="https://www.linkedin.com/company/edificaciones-estructurales-cobay/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <LinkedinIcon className="h-5 w-5" />
+                  Síguenos en LinkedIn
+                </a>
+              </Button>
+            </div>
             <p className="text-sm text-muted-foreground mt-4">{CONTACT_EMAIL}</p>
           </div>
         </div>
