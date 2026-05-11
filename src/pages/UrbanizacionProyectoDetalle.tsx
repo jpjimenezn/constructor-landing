@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ChevronLeft, ChevronRight, Images } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, Images, MapPin, ListChecks } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Footer from "@/components/Footer";
 import { findUrbanizationProjectBySlug } from "@/lib/urbanizacionProjects";
@@ -64,6 +64,35 @@ const UrbanizacionProyectoDetalle = () => {
           <p className="mt-4 max-w-4xl text-lg text-primary-foreground/90">
             {project.fullDescription}
           </p>
+        </div>
+      </section>
+
+      <section className="py-16 bg-secondary/30">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-10">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-full gradient-accent">
+                  <MapPin className="h-5 w-5 text-accent-foreground" />
+                </div>
+                <h2 className="text-xl font-bold text-foreground">Ubicación</h2>
+              </div>
+              <p className="text-muted-foreground leading-relaxed">
+                Información de ubicación próximamente disponible.
+              </p>
+            </div>
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-full gradient-accent">
+                  <ListChecks className="h-5 w-5 text-accent-foreground" />
+                </div>
+                <h2 className="text-xl font-bold text-foreground">Características</h2>
+              </div>
+              <p className="text-muted-foreground leading-relaxed">
+                Detalles y características del proyecto próximamente disponibles.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
