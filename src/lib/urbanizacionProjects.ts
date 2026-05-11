@@ -11,6 +11,7 @@ export type UrbanizationProject = {
   fullDescription: string;
   previewImage: string;
   photos: string[];
+  video?: string;
 };
 
 export type UrbanizationService = {
@@ -93,6 +94,7 @@ export const urbanizationServices: UrbanizationService[] = [
           "Proyecto de mejoramiento vial mediante construccion de laterales y obras complementarias para una circulacion mas ordenada y segura.",
         photos: photosByKeywords("infraestructura-vial", ["lateral-periferico"]),
         previewImage: previewOf(photosByKeywords("infraestructura-vial", ["lateral-periferico"])),
+        video: "/videos/LateralPeriferico.webm",
       },
       {
         slug: "plaza-liberacion",
@@ -102,6 +104,7 @@ export const urbanizationServices: UrbanizationService[] = [
           "Intervencion urbana enfocada en renovar el espacio publico, mejorando imagen urbana, circulaciones y funcionalidad para usuarios y visitantes.",
         photos: photosByKeywords("infraestructura-vial", ["plaza-liberacion"]),
         previewImage: previewOf(photosByKeywords("infraestructura-vial", ["plaza-liberacion"])),
+        video: "/PlazaLiberacionBackground.webm",
       },
       {
         slug: "andador-demostenes",
@@ -147,6 +150,7 @@ export const urbanizationServices: UrbanizationService[] = [
           "Obra carretera para mejorar conectividad regional entre Etzatlan y Magdalena, contemplando terracerias, estructura de pavimento y obras complementarias.",
         photos: photosFor("carreteras"),
         previewImage: previewOf(photosFor("carreteras")),
+        video: "/videos/CarreteraEtzatlanx4.webm",
       },
     ],
   },

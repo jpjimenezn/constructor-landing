@@ -96,6 +96,23 @@ const UrbanizacionProyectoDetalle = () => {
         </div>
       </section>
 
+      {project.video && (
+        <section className="py-12">
+          <div className="container mx-auto px-4">
+            <div className="aspect-video w-full overflow-hidden rounded-xl shadow-2xl">
+              <video
+                src={project.video}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="mb-8 flex items-center gap-3">
