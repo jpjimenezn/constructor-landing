@@ -1,16 +1,11 @@
-import { Briefcase, Heart, Award, Users, Mail } from "lucide-react";
+import { Briefcase, Award, Users, Mail } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 
-const CONTACT_EMAIL = "info@cobay.com.mx";
+const CONTACT_EMAIL = "recursoshumanos@cobay.com.mx";
 
 const benefitsList = [
-  {
-    icon: Heart,
-    title: "Bienestar Integral",
-    description: "Seguro de gastos médicos, seguro de vida y programas de bienestar para ti y tu familia.",
-  },
   {
     icon: Award,
     title: "Desarrollo Profesional",
@@ -58,7 +53,7 @@ const BolsaTrabajo = () => {
           <h2 className="text-2xl font-bold text-accent-foreground text-center mb-10">
             ¿Por qué trabajar en COBAY?
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
             {benefitsList.map((benefit, index) => {
               const Icon = benefit.icon;
               return (
