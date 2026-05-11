@@ -234,8 +234,8 @@ export const urbanizationServices: UrbanizationService[] = [
         shortDescription: "Participacion en infraestructura hospitalaria de alta especialidad.",
         fullDescription:
           "Trabajos de edificacion y adecuaciones especializadas para infraestructura hospitalaria orientada a servicios de salud de alta demanda.",
-        photos: [],
-        previewImage: logoCobay,
+        photos: photosFor("hospitales"),
+        previewImage: previewOf(photosFor("hospitales")),
       },
       {
         slug: "hospital-civil-viejo",
@@ -243,8 +243,8 @@ export const urbanizationServices: UrbanizationService[] = [
         shortDescription: "Intervenciones de rehabilitacion y mantenimiento en complejo hospitalario.",
         fullDescription:
           "Proyecto de rehabilitacion y mantenimiento de infraestructura en Hospital Civil Viejo, con foco en funcionalidad y continuidad operativa.",
-        photos: photosFor("hospitales"),
-        previewImage: previewOf(photosFor("hospitales")),
+        photos: [],
+        previewImage: logoCobay,
       },
       {
         slug: "hospital-psiquiatrico-caisame",
