@@ -96,8 +96,6 @@ const Contact = () => {
               <h4 className="text-xl font-bold mb-4">Horario de Atención</h4>
               <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-8">
                 <p>Lunes a Viernes: 8:00 AM - 6:00 PM</p>
-                <p>Sábados: 9:00 AM - 2:00 PM</p>
-                <p>Domingos: Cerrado</p>
               </div>
             </div>
           </div>

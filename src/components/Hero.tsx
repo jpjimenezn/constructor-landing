@@ -65,7 +65,7 @@ const Hero = () => {
             className="border-2 border-primary bg-white/40 text-primary hover:bg-primary hover:text-primary-foreground font-semibold text-lg px-8 py-6 transition-all duration-300 hover:scale-105"
             asChild
           >
-            <Link to="/desarrollos">
+            <Link to="/urbanizacion">
               Ver proyectos
             </Link>
           </Button>
