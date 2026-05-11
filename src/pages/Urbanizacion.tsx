@@ -42,7 +42,7 @@ const services: ServiceItem[] = [
 const projects: UrbanProject[] = [
   {
     href: "/urbanizacion/carreteras/etzatlan-magdalena",
-    video: "/videos/CarreteraEtzatlanx4.mp4",
+    video: "/videos/CarreteraEtzatlanx4.webm",
     title: "Carretera Etzatlan",
     location: "Etzatlan, Jalisco",
     area: "Infraestructura vial",
@@ -64,7 +64,7 @@ const projects: UrbanProject[] = [
   },
   {
     href: "/urbanizacion/infraestructura-vial/lateral-periferico-sur",
-    video: "/videos/LateralPeriferico.mp4",
+    video: "/videos/LateralPeriferico.webm",
     title: "Lateral Periferico",
     location: "Guadalajara, Jalisco",
     area: "Infraestructura vial",

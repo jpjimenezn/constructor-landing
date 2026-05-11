@@ -1,5 +1,6 @@
 import logoCobay from "@/assets/logo-clasico-cobay.png";
 import infraestructuraVialPreview from "@/assets/urbanizacion/infraestructura-vial/Plaza-Liberacion-01.webp";
+import andadorDemostenesPortada from "@/assets/urbanizacion/infraestructura-vial/Andador-Demostenes-Portada.webp";
 import carreterasPreview from "@/assets/urbanizacion/carreteras/Etzatlan-04.webp";
 import hospitalesPreview from "@/assets/urbanizacion/hospitales/Regional-Civil-Viejo-02.webp";
 
@@ -108,8 +109,8 @@ export const urbanizationServices: UrbanizationService[] = [
         shortDescription: "Desarrollo de andador urbano con enfoque en accesibilidad peatonal.",
         fullDescription:
           "Proyecto de andador urbano para mejorar conectividad local, confort del peaton y calidad del entorno inmediato.",
-        photos: [],
-        previewImage: logoCobay,
+        photos: photosByKeywords("infraestructura-vial", ["andador-demostenes"]),
+        previewImage: andadorDemostenesPortada,
       },
       {
         slug: "ciclovia-vallarta-aviacion",
